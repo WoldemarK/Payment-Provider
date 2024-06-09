@@ -1,15 +1,15 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.3.0'
-    id 'io.spring.dependency-management' version '1.1.5'
+    id 'org.springframework.boot' version "$springBootVersion"
+    id 'io.spring.dependency-management' version "$springDependencyManagement"
 }
 
 group = 'org.provider'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0-SNAPSHOT'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of("$javaLanguageVersion")
     }
 }
 
@@ -26,11 +26,13 @@ repositories {
 dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-r2dbc', version: '2.7.2'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-r2dbc', version:
+            "$springBootStarterDataR2dbcVersion"
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
-    implementation group: 'io.r2dbc', name: 'r2dbc-postgresql', version: '0.8.11.RELEASE'
+    implementation group: 'io.r2dbc', name: 'r2dbc-postgresql', version:
+            "$r2dbcPostgresqlVersion"
 
     annotationProcessor 'org.projectlombok:lombok'
 
@@ -38,15 +40,20 @@ dependencies {
     testImplementation 'io.projectreactor:reactor-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webflux-ui', version: '2.3.0'
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webflux-ui', version:
+            "$springdocOpenapiStarterWebfluxUir2dbcPostgresqlVersion"
 
-    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.4'
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version:
+            "$javaxXmlBindr2dbcPostgresqlVersion"
 
 
-    implementation group: 'org.flywaydb', name: 'flyway-core', version: '9.16.3'
+    implementation group: 'org.flywaydb', name: 'flyway-core', version:
+            "$flywayCoreVersion"
 
-    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.5.Final'
-    implementation group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.5.3.Final'
+    implementation group: 'org.mapstruct', name: 'mapstruct', version:
+            "$orgMapstructVersion"
+    implementation group: 'org.mapstruct', name: 'mapstruct-processor', version:
+            "$orgMapstructProcessorVersion"
 
 }
 
