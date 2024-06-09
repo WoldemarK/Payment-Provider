@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.0'
+    id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'org.provider'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-r2dbc', version: '2.7.2'
+
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'org.postgresql:postgresql'
+    implementation group: 'io.r2dbc', name: 'r2dbc-postgresql', version: '0.8.11.RELEASE'
+
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webflux-ui', version: '2.3.0'
+
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.4'
+
+
+    implementation group: 'org.flywaydb', name: 'flyway-core', version: '9.16.3'
+
+    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.5.Final'
+    implementation group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.5.3.Final'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
