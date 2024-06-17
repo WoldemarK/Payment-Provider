@@ -1,5 +1,6 @@
 package org.provider.paymentprovider.model;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
@@ -24,6 +25,7 @@ public class Card {
     @Column(value = "cvv")
     private int cvv;
 
+    @NotNull
     @Column(value = "customer_id")
     private BigInteger customerId;
 

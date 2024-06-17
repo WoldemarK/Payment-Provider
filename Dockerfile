@@ -1,3 +1,14 @@
-FROM bellsoft/liberica-openjdk-alpine-musl
-COPY ./target/PaymentProvider-1.0.0-SNAPSHOT.jar .
-CMD ["java","-jar","PaymentProvider-1.0.0-SNAPSHOT.jar"]
+## Build stage
+FROM gradle:jdk21-jammy AS build
+COPY --chown=gradle:gradle . /home/gradle/src
+WORKDIR /home/gradle/src
+RUN gradle build --no-daemon
+
+## Package stage
+FROM openjdk:21-jdk-slim
+
+ENV port 9200
+
+RUN mkdir /app
+COPY --from=build /home/gradle/src/build/libs/*.jar /app/Payment-Provider-1.0.0.jar
+ENTRYPOINT ["java","-jar","/app/Payment-Provider-1.0.0.jar"]
