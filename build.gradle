@@ -30,9 +30,8 @@ dependencies {
             "$springBootStarterDataR2dbcVersion"
 
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'org.postgresql:postgresql'
-    implementation group: 'io.r2dbc', name: 'r2dbc-postgresql', version:
-            "$r2dbcPostgresqlVersion"
+    implementation group: 'org.postgresql', name: 'postgresql', version:"$postgresVersion"
+    implementation group: 'io.r2dbc', name: 'r2dbc-postgresql', version:"$r2dbcPostgresqlVersion"
 
     annotationProcessor 'org.projectlombok:lombok'
 
@@ -47,8 +46,8 @@ dependencies {
             "$javaxXmlBindr2dbcPostgresqlVersion"
 
 
-//    implementation group: 'org.flywaydb', name: 'flyway-core', version:
-//            "$flywayCoreVersion"
+    implementation group: 'org.flywaydb', name: 'flyway-core', version:
+            "$flywayCoreVersion"
 
     implementation group: 'org.mapstruct', name: 'mapstruct', version:
             "$orgMapstructVersion"
